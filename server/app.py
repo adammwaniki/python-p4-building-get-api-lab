@@ -60,8 +60,9 @@ def baked_goods_by_price():
 @app.route('/baked_goods/most_expensive')
 def most_expensive_baked_good():
 
+    # Finding the first result from this query
     baked_good = BakedGood.query.order_by(BakedGood.price.desc()).first() 
-
+    # If it exists it will be converted to a dictionary, else it will return an empty dictionary
     baked_goods_dict = baked_good.to_dict() if baked_good else {}
 
     response = make_response(
